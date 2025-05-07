@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const qs = require("qs"); // para formatear como x-www-form-urlencoded
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
@@ -14,9 +15,9 @@ app.post("/submit", async (req, res) => {
   try {
     console.log("Recibido en /submit:", req.body);
 
-    const response = await axios.post(GOOGLE_SCRIPT_URL, req.body, {
+    const response = await axios.post(GOOGLE_SCRIPT_URL, qs.stringify(req.body), {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     });
 
