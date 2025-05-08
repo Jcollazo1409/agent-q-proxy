@@ -30,4 +30,3 @@ app.post("/submit", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor proxy corriendo en puerto ${PORT}`);
 });
-
